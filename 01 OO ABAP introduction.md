@@ -1,3 +1,72 @@
+# CLASS - Is a template
+
+``` abap
+
+CLASS zcl_am_test_oo DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+CLASS zcl_am_test_oo IMPLEMENTATION.
+ENDCLASS.
+
+
+
+```
+
+
+## What each keyword/section means
+
+### 
+
+CLASS ... DEFINITION
+Declares the class interface (its shape). This is where you define:
+
+Attributes (data members)
+Methods (signatures only)
+Interfaces
+Aliases
+Friends
+Events
+
+PUBLIC : The class itself is visible to all consumers in the system. (Opposed to PRIVATE classes declared inside another class or local to programs.)
+FINAL : Prevents inheritance. No one can create a subclass of this class.
+
+Use when: You want to guarantee behavior isn’t extended/overridden (e.g., utility classes, helpers).
+Don’t use if: You expect others to enhance/extend via subclassing.
+CREATE PUBLIC
+Controls instantiation visibility:
+
+CREATE PUBLIC → NEW zcl_am_test_oo( ) is allowed everywhere.
+CREATE PROTECTED → Only subclasses (and friends) can instantiate.
+CREATE PRIVATE → Only the class itself (and friends) can instantiate (use with factory methods).
+
+
+#### ⚠️ Common pitfall: Developers sometimes mark a class FINAL but forget they still can control instantiation with CREATE PRIVATE and expose a factory method instead.
+
+
+## Visibility sections
+
+### PUBLIC SECTION.
+Anything declared here is visible to all consumers:
+
+Public methods
+Public constants/types
+Public attributes (usually avoid mutable public attributes—prefer getter/setter or read-only access)
+
+### PROTECTED SECTION.
+Visible to the class and subclasses (and friends).
+Typical use: Template method pattern hooks, reusable helper methods for subclasses.
+
+### PRIVATE SECTION.
+Visible only within the class.
+Put implementation details here: internal attributes, helper methods, caches.
+
 Let’s understand Object-Oriented ABAP (OO ABAP) vs Procedural ABAP using a real-life example — something simple and relatable:
 
 🛒 Scenario: Online Shopping System
@@ -11,6 +80,7 @@ FORM calculate_total
 FORM print_invoice
 
 Each routine handles a specific task, and data is passed around manually.
+
 🔧 Example:
 
 ``` abap
