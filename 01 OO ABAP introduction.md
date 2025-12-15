@@ -156,4 +156,20 @@ Maintainability: Easier to update and debug.
 Scalability: Ideal for large applications like Fiori, RAP, and BTP.
 
 
+## Object-Oriented Design with ABAP A Practical Approach James E. McDonough
+
+### 
+• Encapsulation
+• Abstraction
+• Inheritance
+• Polymorphism
+
+
+<img width="835" height="631" alt="image" src="https://github.com/user-attachments/assets/3e5531bf-9bcd-416c-bb7d-13d4fd212861" />
+
+
+
+
+
+
 
