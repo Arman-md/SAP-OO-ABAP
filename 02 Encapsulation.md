@@ -279,9 +279,15 @@ belong to the static realm. This constitutes a hybrid class
 
 ---
 
+
 ## 🔍 Object Destruction in ABAP
 - **No explicit destructors** in ABAP.
-- To destroy an object- To destroy an object:
+- To destroy an object:
   ```abap
+  CLEAR object_ref.
+
+
+  
+
 
 
