@@ -98,7 +98,58 @@
 **Publisher:** O’Reilly Media  
 **Price:** US \$69.99 | CAN \$92.99  
 
+
+# 📘 Intro to Design Patterns
+
+## 1. Welcome to Design Patterns
+**Someone has already solved your problems.**  
+In this chapter, you’ll learn why (and how) you can exploit the wisdom and lessons learned by other developers who’ve been down the same design problem road and survived the trip.
+
+Before we’re done, we’ll look at:
+- The **use and benefits** of design patterns.
+- Key **object-oriented (OO) design principles**.
+- An example of how one pattern works.
+
+The best way to use patterns is to:
+- **Load your brain** with them.
+- **Recognize places** in your designs and existing applications where you can **apply them**.
+
+Instead of **code reuse**, with patterns you get **experience reuse**.
+
 ---
 
-> *“Head First Design Patterns manages to mix fun, belly-laughs, insight, technical depth, and great practical advice in one entertaining and thought-provoking read.”*  
-— Richard Helm, coauthor of *Design Patterns*
+### 💡 Key Thoughts
+> Knowing concepts like abstraction, inheritance, and polymorphism does not make you a good object-oriented designer.  
+> A design guru thinks about how to create **flexible designs** that are **maintainable** and can **cope with change**.
+
+---
+
+### 🦆 Duck Example Topics
+- It started with a simple SimUDuck app
+- But now we need the ducks to **FLY**
+- Something went horribly wrong…
+- Joe thinks about inheritance…
+- How about an interface?
+- What would you do if you were Joe?
+- The one constant in software development
+- Zeroing in on the problem…
+- Separating what changes from what stays the same
+- Designing the Duck Behaviors
+- Implementing the Duck Behaviors
+- Integrating the Duck Behavior
+- Testing the Duck code
+- Setting behavior dynamically
+- The Big Picture on encapsulated behaviors
+- **HAS-A** can be better than **IS-A**
+- Speaking of Design Patterns…
+- Overheard at the local diner…
+- Overheard in the next cubicle…
+- The power of a shared pattern vocabulary
+- How do I use Design Patterns?
+- Tools for your Design Toolbox
+
+---
+
+
+
+
