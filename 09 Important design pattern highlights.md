@@ -281,3 +281,117 @@ That’s not all; while we’re at it, we’re going to look at another pattern 
 ### 🔍 Adapter Pattern Diagram
 ``
 
+
+# Template Method Pattern — Encapsulating Algorithms
+
+> A behavioral design pattern that defines the **skeleton of an algorithm** in an operation, deferring **some steps to subclasses**.  
+> The base class controls the flow; subclasses supply implementations for the variable steps (and may customize behavior through **hooks**).
+
+---
+
+## 🧠 Why use it?
+
+- **Consistency of process**: Keep the overall steps of an algorithm fixed while allowing parts to vary.
+- **Avoid duplicate code**: Common steps live in one place (the base class).
+- **Enforce order**: The algorithm runs in the exact sequence you define.
+- **Open for extension, closed for modification**: Subclasses extend specific points without changing the template method.
+
+---
+
+## 🎯 Intent
+
+Define an operation that:
+1. Calls a series of steps in a fixed order (**the template method**).
+2. Lets subclasses implement or override **abstract steps** (must implement) and **hooks** (optional customization).
+
+---
+
+## 🔤 Vocabulary
+
+- **Template Method**: The base-class method that orchestrates the algorithm (the “recipe”).
+- **Abstract Operations**: Steps the subclasses *must* provide.
+- **Concrete Operations**: Steps fully implemented in the base class.
+- **Hooks**: Optional methods with default (often empty) implementations that subclasses *may* override to tweak behavior.
+
+---
+
+## ☕ The Classic Example (Coffee & Tea)
+
+Both drinks share the same preparation flow:
+
+1. Boil water  
+2. Brew (coffee grinds / steep tea bag)  
+3. Pour into cup  
+4. Add condiments (sugar & milk / lemon)
+
+We generalize the recipe in a base class and rely on subclasses for the differing steps.
+
+---
+
+## ✅ Java Example
+
+```java
+// Base class: defines the template method (the fixed algorithm)
+public abstract class CaffeineBeverage {
+
+    // Template Method: final to prevent subclasses from changing the overall flow
+    public final void prepareRecipe() {
+        boilWater();
+        brew();             // abstract step
+        pourInCup();
+        if (customerWantsCondiments()) { // hook
+            addCondiments(); // abstract step
+        }
+    }
+
+    // Steps that vary
+    protected abstract void brew();
+    protected abstract void addCondiments();
+
+    // Concrete steps common to all beverages
+    protected void boilWater() {
+        System.out.println("Boiling water");
+    }
+
+    protected void pourInCup() {
+        System.out.println("Pouring into cup");
+    }
+
+    // Hook: default behavior (optional override)
+    protected boolean customerWantsCondiments() {
+        return true;
+    }
+}
+
+// Tea subclass
+public class Tea extends CaffeineBeverage {
+    @Override
+    protected void brew() {
+        System.out.println("Steeping the tea");
+    }
+    @Override
+    protected void addCondiments() {
+        System.out.println("Adding lemon");
+    }
+
+    // Example hook customization
+    @Override
+    protected boolean customerWantsCondiments() {
+        // could read a flag/user input; hard-coded for demo
+        return true;
+    }
+}
+
+// Coffee subclass
+public class Coffee extends CaffeineBeverage {
+    @Override
+    protected void brew() {
+        System.out.println("Dripping coffee through filter");
+    }
+    @Override
+    protected void addCondiments() {
+        System.out.println("Adding sugar and milk");
+    }
+}
+
+
