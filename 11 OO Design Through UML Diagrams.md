@@ -412,7 +412,104 @@ dead_reckoning ..|> simple_navigation
 
 ```
 
+✅ 1. Understanding Ownership in Your UML
+A. report *-- "0..*" vehicle
 
+This is a composition (shown by the filled diamond *--).
+Meaning:
+
+A report owns vehicles.
+A vehicle cannot exist without the report that owns it.
+Cardinality "0..*" means:
+
+A report can have zero or many vehicles.
+
+
+
+```
+
+➡️ Simple explanation:
+If a report is deleted, all the vehicles inside it also disappear.
+
+B. vehicle *-- "1" simple_navigation
+
+Also a composition.
+Meaning:
+
+A vehicle owns exactly one simple_navigation object.
+That navigation subsystem is a part of the vehicle.
+Without the vehicle, the navigation system doesn’t exist.
+
+
+
+➡️ Simple explanation:
+Every vehicle must have one internal navigation system, and that navigation system cannot live on its own outside the vehicle.
+
+✅ 2. Inheritance (Generalization)
+
+vehicle <|-- car
+vehicle <|-- truck
+
+- `car` and `truck` **inherit** from `vehicle`.
+- Meaning:
+  - Both are *special types* of vehicles.
+
+➡️ **Simple explanation:**  
+A car **is a** vehicle.  
+A truck **is a** vehicle.
+
+---
+
+# ✅ **3. Interface Realization**
+
+### ```
+navigator ..|> simple_navigation
+gps ..|> simple_navigation
+dead_reckoning ..|> simple_navigation
+
+
+All three classes implement the simple_navigation interface.
+Meaning:
+
+navigator, gps, and dead_reckoning provide navigation functionality defined by simple_navigation.
+
+
+
+➡️ Simple explanation:
+They all follow the same navigation contract, but provide their own way of doing navigation.
+
+✅ 4. Summary of Relationship Types in Your UML
+Composition (*--)
+
+Strongest form of ownership.
+Part–whole relationship.
+Lifetimes are linked: part dies with whole.
+
+In your diagram:
+
+report → vehicles
+vehicle → simple_navigation (one)
+
+
+Generalization (<|--)
+
+Inheritance / "is-a" relationship.
+
+In your diagram:
+
+car is a vehicle
+truck is a vehicle
+
+
+Interface Realization (..|>)
+
+Class implements an interface.
+
+In your diagram:
+
+navigator, gps, dead_reckoning implement simple_navigation.
+
+```
 # UML Summary ✅
 
 In this chapter, we explored the **Unified Modeling Language (UML)** and its role in communicating design.
